@@ -1,16 +1,21 @@
 # College Admission Management System
 
 students = []
+serial_number = 1
 
 def add_student():
+    global serial_number
+
     print("\n--- Enter Student Admission Details ---")
 
     student = {}
 
+    student["SL No"] = serial_number
     student["Name"] = input("Enter Student Name: ")
     student["Application Number"] = input("Enter Application Number: ")
     student["Date of Birth"] = input("Enter Date of Birth: ")
     student["Gender"] = input("Enter Gender: ")
+    student["Blood Group"] = input("Enter Blood Group: ")
     student["Contact Number"] = input("Enter Contact Number: ")
     student["Email ID"] = input("Enter Email ID: ")
     student["Address"] = input("Enter Address: ")
@@ -21,8 +26,11 @@ def add_student():
     student["Admission Status"] = input("Enter Admission Status: ")
 
     students.append(student)
+    serial_number += 1
 
     print("\nAdmission Details Added Successfully!")
+    print("Generated SL No:", student["SL No"])
+
 
 def display_students():
     if not students:
@@ -35,17 +43,20 @@ def display_students():
                 print(key, ":", value)
             print("--------------------------------")
 
+
 def search_student():
     number = input("Enter Application Number: ")
 
     for student in students:
         if student["Application Number"] == number:
             print("\nStudent Record Found!")
+
             for key, value in student.items():
                 print(key, ":", value)
             return
 
     print("\nStudent Record Not Found!")
+
 
 while True:
     print("\n===== COLLEGE ADMISSION MANAGEMENT SYSTEM =====")
